@@ -163,23 +163,23 @@ function selectHardwareOption(element, value) {
     const detailImg = document.getElementById('hardware-detail-img');
     if (detailImg) {
         if (value === 'Kit Essencial: Argola + Laço com acabamento costurado + Zíper com banho dourado') {
-            detailImg.src = "images/media__1781370902653.png";
+            detailImg.src = "media__1781370902653.png";
             detailImg.style.objectFit = "cover";
             detailImg.style.objectPosition = "center";
             detailImg.style.transform = "none"; 
         } else if (value === 'Kit Elegância: Feixe + Laço com acabamento costurado + Zíper com Banho Dourado') {
-            detailImg.src = "images/media__1781371061362.png";
+            detailImg.src = "media__1781371061362.png";
             detailImg.style.objectFit = "cover";
             detailImg.style.objectPosition = "center";
             detailImg.style.transform = "none";
         } else if (value === 'Kit Encanto: Argola Premium + Laço com Acabamento Metálico + Zíper Perfurado') {
-            detailImg.src = "images/media__1781371551871.png";
+            detailImg.src = "media__1781371551871.png";
             detailImg.style.objectFit = "cover";
             detailImg.style.objectPosition = "center";
             detailImg.style.transform = "none";
         } else {
             // Fallback default
-            detailImg.src = "images/media__1781025903501.jpg";
+            detailImg.src = "media__1781025903501.jpg";
             detailImg.style.objectFit = "cover";
             detailImg.style.objectPosition = "center";
             detailImg.style.transform = "none";
