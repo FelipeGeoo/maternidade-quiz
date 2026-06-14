@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliê dos Sonhos - Personalize sua Bolsa</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Progress Bar -->
+        <div id="progress-container" class="hidden">
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+            <div id="progress-text">1/6</div>
+        </div>
+
+        <!-- Tela 1: Landing -->
+        <section id="step-1" class="step active">
+            <div class="hero-image-container">
+                <div class="hero-overlay"></div>
+                <img src="images/media__1777839853039.jpg" alt="Kit Pronto">
+            </div>
+            <div class="content">
+                <h1 class="title-serif" style="font-size: 24px;">Monte seu kit</h1>
+                <p class="subtitle-sans" style="font-size: 13px; margin-bottom: 8px;">Bem-vinda ao ateliê AmfretBaby. Há mais de 10 anos unindo elegância, funcionalidade e qualidade premium para mães exigentes.</p>
+                <button class="btn-primary" onclick="nextStep(2)">INICIAR MINHA PERSONALIZAÇÃO ✨</button>
+                <p class="scarcity-text">Vagas de produção limitadas para esta semana.</p>
+            </div>
+        </section>
+
+        <!-- Tela 2: Produtos Unitários -->
+        <section id="step-2" class="step">
+            <div class="content top-aligned" style="padding-bottom: 24px;">
+                <h2 class="title-serif">O Tamanho do seu Sonho</h2>
+                <p class="subtitle-sans">Selecione as peças que irão compor o seu enxoval:</p>
+                
+                <div class="options-grid list-options">
+                    <div class="option-list-item" onclick="toggleSelection('Mala de Rodinhas', this)">
+                        <div class="item-mockup"><img src="images/media__1778295795936.png" alt="Mala"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Mala de Rodinhas</span>
+                            <div class="item-price-block">
+                                <span class="old-price">339,90</span>
+                                <span class="new-price">249,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Bolsa Grande', this)">
+                        <div class="item-mockup"><img src="images/media__1778296080994.jpg" alt="Bolsa Grande"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Bolsa Grande</span>
+                            <div class="item-price-block">
+                                <span class="old-price">279,90</span>
+                                <span class="new-price">189,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Bolsa Média', this)">
+                        <div class="item-mockup"><img src="images/media__1778296384351.jpg" alt="Bolsa Média"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Bolsa Média</span>
+                            <div class="item-price-block">
+                                <span class="old-price">229,90</span>
+                                <span class="new-price">139,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Mochila', this)">
+                        <div class="item-mockup"><img src="images/media__1778296585832.png" alt="Mochila"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Mochila</span>
+                            <div class="item-price-block">
+                                <span class="old-price">299,90</span>
+                                <span class="new-price">209,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Trocador', this)">
+                        <div class="item-mockup"><img src="images/media__1778296752611.png" alt="Trocador"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Trocador</span>
+                            <div class="item-price-block">
+                                <span class="old-price">80,00</span>
+                                <span class="new-price">40,00</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Necessaire', this)">
+                        <div class="item-mockup"><img src="images/media__1778296957534.jpg" alt="Necessaire"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Necessaire</span>
+                            <div class="item-price-block">
+                                <span class="old-price">99,90</span>
+                                <span class="new-price">69,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item" onclick="toggleSelection('Porta Cartão de Vacinas', this)">
+                        <div class="item-mockup"><img src="images/media__1778297637052.png" alt="Porta Cartão"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Porta Cartão de Vacinas</span>
+                            <div class="item-price-block">
+                                <span class="old-price">89,90</span>
+                                <span class="new-price">59,90</span>
+                            </div>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                    <div class="option-list-item has-qty" onclick="toggleSelection('Saquinhos Organizadores', this)">
+                        <div class="item-mockup"><img src="images/media__1778349422565.jpg" alt="Saquinhos"></div>
+                        <div class="item-content-wrapper has-price">
+                            <span class="item-name">Saquinhos Organizadores</span>
+                            <div class="item-price-block">
+                                <span class="new-price" style="font-size: 18px;">35,00 un.</span>
+                            </div>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="changeQuantity(event, 'Saquinhos Organizadores', -1)">-</button>
+                            <span id="qty-Saquinhos" class="qty-value">1</span>
+                            <button class="qty-btn" onclick="changeQuantity(event, 'Saquinhos Organizadores', 1)">+</button>
+                        </div>
+                        <div class="check-circle"></div>
+                    </div>
+                </div>
+                
+                <div id="total-container" class="total-container hidden-total">
+                    <span>Total do Kit:</span>
+                    <span id="total-price">R$ 0,00</span>
+                </div>
+
+                <button id="btn-next-step2" class="btn-primary" disabled onclick="nextStep(3)" style="margin-top: 24px;">Avançar</button>
+            </div>
+        </section>
+
+        <!-- Tela 3: Cor Principal (Charlotte Tilbury Minimalist Layout) -->
+        <section id="step-3" class="step">
+            <div class="step3-bg"></div>
+
+             <div class="content flex-column-center step3-content">
+                
+                <div class="step3-header">
+                    <p class="step3-subtitle">A Base da sua Joia</p>
+                    <h2 class="step3-title">Cor Principal</h2>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <span class="side-num left" id="side-num-left"></span>
+                    
+                    <!-- Carousel Container -->
+                    <div class="carousel-container" id="color-carousel">
+                        <div class="carousel-slide" data-index="0">
+                            <div class="bag-display">
+                                <img src="images/media__1778738866760.jpg" class="carousel-bag-img" alt="Off-White">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="1">
+                            <div class="bag-display">
+                                <img src="images/media__1778739383099.jpg" class="carousel-bag-img" alt="Bege Escuro">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="2">
+                            <div class="bag-display">
+                                <img src="images/media__1779305906011.jpg" class="carousel-bag-img" alt="Caramelo Clássico">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="3">
+                            <div class="bag-display">
+                                <img src="images/media__1779306071410.jpg" class="carousel-bag-img" alt="Marinho">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="4">
+                            <div class="bag-display">
+                                <img src="images/media__1779306383733.jpg" class="carousel-bag-img" alt="Linho Bege">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="5">
+                            <div class="bag-display">
+                                <img src="images/media__1779464626576.jpg" class="carousel-bag-img" alt="Linho Marinho">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="6">
+                            <div class="bag-display">
+                                <img src="images/media__1779464781552.jpg" class="carousel-bag-img" alt="Linho Cinza Claro">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="7">
+                            <div class="bag-display">
+                                <img src="images/media__1779464961323.jpg" class="carousel-bag-img" alt="Preto">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="8">
+                            <div class="bag-display">
+                                <img src="images/media__1780930575205.jpg" class="carousel-bag-img" alt="Rosa Brilhante">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="9">
+                            <div class="bag-display">
+                                <img src="images/media__1780930774260.jpg" class="carousel-bag-img" alt="Verde">
+                            </div>
+                        </div>
+                        <div class="carousel-slide" data-index="10">
+                            <div class="bag-display">
+                                <img src="images/media__1780961844157.jpg" class="carousel-bag-img" alt="Linho Cinza">
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="side-num right" id="side-num-right">02</span>
+                </div>
+
+                <div class="carousel-indicators" id="color-indicators">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="carousel-info">
+                    <h1 class="slide-main-title" id="slide-title">Off-White</h1>
+                    <p class="slide-main-subtitle" id="slide-subtitle">Couro Sintético Premium</p>
+                </div>
+                
+                <div class="carousel-actions">
+                    <button id="btn-select-color" class="btn-circular-select" onclick="selectColorAndAdvance()"></button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tela 4: Cor dos Detalhes e Metais -->
+        <section id="step-4" class="step">
+             <div class="content top-aligned">
+                <h2 class="title-serif">O Requinte dos Detalhes</h2>
+                <p class="subtitle-sans">Quais serão as ferragens?</p>
+                
+                <img id="hardware-detail-img" src="images/media__1781025903501.jpg" class="detail-img" alt="Detalhe Ferragem">
+
+                <div class="options-grid text-options" id="hardware-options">
+                    <div class="option-text" onclick="selectHardwareOption(this, 'Kit Essencial: Argola + Laço com acabamento costurado + Zíper com banho dourado')">Kit Essencial: Argola + Laço com acabamento costurado + Zíper com banho dourado</div>
+                    <div class="option-text" onclick="selectHardwareOption(this, 'Kit Elegância: Feixe + Laço com acabamento costurado + Zíper com Banho Dourado')">Kit Elegância: Feixe + Laço com acabamento costurado + Zíper com Banho Dourado</div>
+                    <div class="option-text" onclick="selectHardwareOption(this, 'Kit Encanto: Argola Premium + Laço com Acabamento Metálico + Zíper Perfurado')">Kit Encanto: Argola Premium + Laço com Acabamento Metálico + Zíper Perfurado <b>(+ R$ 25,00)</b></div>
+                </div>
+                
+                <button class="btn-primary" id="btn-next-step4" disabled onclick="advanceFromStep4()">Avançar</button>
+            </div>
+        </section>
+
+        <!-- Tela 5: O Bordado -->
+        <section id="step-5" class="step">
+             <div class="content top-aligned">
+                <h2 class="title-serif">O Símbolo Desse Amor</h2>
+                <p class="subtitle-sans">Qual arte simboliza a chegada do seu bebê?</p>
+                
+                <div class="options-grid icon-options">
+                    <div class="option-icon" onclick="selectOption('estilo_bordado', 'Ursinho Realeza', 6)">
+                        <div class="icon">🧸</div>
+                        <span>Ursinho Realeza</span>
+                    </div>
+                    <div class="option-icon" onclick="selectOption('estilo_bordado', 'Chuva de Amor', 6)">
+                        <div class="icon">🌧️</div>
+                        <span>Chuva de Amor</span>
+                    </div>
+                    <div class="option-icon" onclick="selectOption('estilo_bordado', 'Ramo Minimalista', 6)">
+                        <div class="icon">🌿</div>
+                        <span>Ramo Minimalista</span>
+                    </div>
+                    <div class="option-icon" onclick="selectOption('estilo_bordado', 'Sem Bordado (Apenas Lisa)', 8)">
+                        <div class="icon">✨</div>
+                        <span>Sem Bordado (Lisa)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela 6: Nome do Bebê -->
+        <section id="step-6" class="step">
+             <div class="content">
+                <h2 class="title-serif">O Nome Mais Lindo</h2>
+                <p class="subtitle-sans">Qual será o nome bordado?</p>
+                
+                <div class="input-group">
+                    <input type="text" id="nome_bebe" placeholder="Digite o nome..." onkeyup="checkInput()">
+                </div>
+                
+                <button id="btn-next-name" class="btn-primary" disabled onclick="saveNameAndNext()">Avançar</button>
+            </div>
+        </section>
+
+        <!-- Tela 7: Tipografia -->
+        <section id="step-7" class="step">
+             <div class="content top-aligned">
+                <h2 class="title-serif">Estilos de Caligrafia</h2>
+                <p class="subtitle-sans">Escolha a fonte que mais combina com a identidade:</p>
+                
+                <div class="options-grid font-options">
+                    <div class="option-font" style="font-family: 'Playfair Display', serif; font-style: italic;" onclick="selectOption('estilo_fonte', 'Clássica', 8)">
+                        <span class="preview-name">Nome</span>
+                        <small>Clássica</small>
+                    </div>
+                    <div class="option-font" style="font-family: 'Montserrat', sans-serif; font-weight: 300;" onclick="selectOption('estilo_fonte', 'Moderna', 8)">
+                        <span class="preview-name">NOME</span>
+                        <small>Moderna</small>
+                    </div>
+                    <div class="option-font" style="font-family: 'Brush Script MT', cursive;" onclick="selectOption('estilo_fonte', 'Romântica', 8)">
+                        <span class="preview-name">Nome</span>
+                        <small>Romântica</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela 8: Resumo -->
+        <section id="step-8" class="step">
+             <div class="content">
+                <h2 class="title-serif">O Grand Finale ✨</h2>
+                <div class="summary-card">
+                    <p class="subtitle-sans" id="summary-text">
+                        <!-- Filled by JS -->
+                    </p>
+                </div>
+                <button class="btn-whatsapp" onclick="sendToWhatsapp()">Confirmar Pedido no WhatsApp <span class="wpp-icon">📱</span></button>
+                <button class="btn-secondary" onclick="restartQuiz()">Refazer Escolhas</button>
+            </div>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
