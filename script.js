@@ -6,8 +6,7 @@ const state = {
     cor_detalhe: '',
     estilo_bordado: '',
     nome_bebe: '',
-    estilo_fonte: ''
-};
+    };
 
 const productPrices = {
     "Mala de Rodinhas": 249.90,
@@ -15,6 +14,7 @@ const productPrices = {
     "Bolsa Média": 139.90,
     "Mochila": 209.90,
     "Trocador": 40.00,
+    "Trocador (Com Bordado)": 40.00,
     "Necessaire": 69.90,
     "Porta Cartão de Vacinas": 59.90,
     "Saquinhos Organizadores": 35.00
@@ -126,6 +126,9 @@ function nextStep(step) {
     currentStep = step;
     updateProgress();
     
+    // Rola para o topo da página suavemente ao trocar de etapa
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     if (step === 8) {
         generateSummary();
     }
@@ -135,7 +138,7 @@ function selectOption(key, value, nextStepNum) {
     state[key] = value;
     
     // Update preview names in step 7 dynamically
-    if (key === 'nome_bebe' || currentStep === 6) {
+    if (key === 'nome_bebe' || currentStep === 7) {
          const previews = document.querySelectorAll('.preview-name');
          previews.forEach(p => p.innerText = state.nome_bebe || 'Nome');
     }
@@ -196,23 +199,50 @@ function selectHardwareOption(element, value) {
 
 function advanceFromStep4() {
     if(state.cor_detalhe) {
-        nextStep(5);
+        nextStep(6);
     }
+}
+
+function toggleNoName() {
+    const opt = document.getElementById('opt-no-name');
+    const input = document.getElementById('nome_bebe');
+    
+    opt.classList.toggle('selected');
+    
+    if (opt.classList.contains('selected')) {
+        input.value = '';
+        input.disabled = true;
+    } else {
+        input.disabled = false;
+    }
+    checkInput();
 }
 
 function checkInput() {
     const input = document.getElementById('nome_bebe');
     const btn = document.getElementById('btn-next-name');
-    btn.disabled = input.value.trim() === '';
+    const opt = document.getElementById('opt-no-name');
+    const noNameSelected = opt && opt.classList.contains('selected');
+    
+    btn.disabled = (input.value.trim() === '' && !noNameSelected);
 }
 
 function saveNameAndNext() {
-    const name = document.getElementById('nome_bebe').value.trim();
-    if (name) {
-        state.nome_bebe = name;
-        const previews = document.querySelectorAll('.preview-name');
-        previews.forEach(p => p.innerText = name);
-        nextStep(7);
+    const input = document.getElementById('nome_bebe');
+    const opt = document.getElementById('opt-no-name');
+    const noNameSelected = opt && opt.classList.contains('selected');
+
+    if (noNameSelected) {
+        state.nome_bebe = 'Apenas desenho ou sem nome para bordar';
+        nextStep(8); // Go to summary
+    } else {
+        const name = input.value.trim();
+        if (name) {
+            state.nome_bebe = name;
+            const previews = document.querySelectorAll('.preview-name');
+            previews.forEach(p => p.innerText = name);
+            nextStep(8);
+        }
     }
 }
 
@@ -227,10 +257,14 @@ function generateSummary() {
     });
     const produtosText = produtosTextArray.join(', ');
     
-    let text = `Que escolha impecável! ✨<br><br>As suas peças (<strong>${produtosText}</strong>) serão produzidas em <strong>${state.cor_principal}</strong>, com detalhes requintados em <strong>${state.cor_detalhe}</strong>.`;
+    let text = `Que escolha impecável! ✨<br><br>As suas peças (<strong>${produtosText}</strong>) serão produzidas em <strong>${state.cor_principal}</strong>, com detalhes requintados em <strong>${state.cor_detalhe}</strong> e pequenos detalhes secundários em <strong>${state.cor_secundaria || 'Padrão'}</strong>.`;
     
     if (state.estilo_bordado !== 'Sem Bordado (Apenas Lisa)') {
-        text += ` A arte escolhida foi <strong>${state.estilo_bordado}</strong> e a personalização será com o nome <strong>${state.nome_bebe}</strong> na fonte <strong>${state.estilo_fonte}</strong>.`;
+        if (state.nome_bebe === 'Apenas desenho ou sem nome para bordar') {
+            text += ` A arte escolhida foi <strong>${state.estilo_bordado}</strong> (sem nome bordado).`;
+        } else {
+            text += ` A arte escolhida foi <strong>${state.estilo_bordado}</strong> e a personalização será com o nome <strong>${state.nome_bebe}</strong>.`;
+        }
     } else {
         text += ` Você optou por peças elegantes <strong>Sem Bordado (Apenas Lisa)</strong>.`;
     }
@@ -258,11 +292,15 @@ function sendToWhatsapp() {
     message += `*Valor Total:* R$ ${total.toFixed(2).replace('.', ',')}\n\n`;
     message += `*Cor Principal:* ${state.cor_principal}\n`;
     message += `*Detalhes:* ${state.cor_detalhe}\n`;
+    if(state.cor_secundaria) message += `*Detalhes Secundários:* ${state.cor_secundaria}\n`;
     message += `*Bordado:* ${state.estilo_bordado}\n`;
     
     if (state.estilo_bordado !== 'Sem Bordado (Apenas Lisa)') {
-        message += `*Nome:* ${state.nome_bebe}\n`;
-        message += `*Fonte:* ${state.estilo_fonte}\n`;
+        if (state.nome_bebe === 'Apenas desenho ou sem nome para bordar') {
+            message += `*Nome:* Sem nome (apenas desenho)\n`;
+        } else {
+            message += `*Nome:* ${state.nome_bebe}\n`;
+        }
     }
     
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -277,6 +315,7 @@ function restartQuiz() {
     state.cor_detalhe = '';
     state.estilo_bordado = '';
     state.nome_bebe = '';
+    state.cor_secundaria = '';
     state.estilo_fonte = '';
     
     updateTotal();

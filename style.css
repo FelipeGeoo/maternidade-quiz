@@ -246,6 +246,7 @@ body {
 .text-options { grid-template-columns: 1fr; }
 .icon-options { grid-template-columns: 1fr 1fr; }
 .font-options { grid-template-columns: 1fr; }
+.image-options { grid-template-columns: 1fr 1fr; gap: 12px; }
 
 /* Option Cards */
 .option-card, .option-color, .option-text, .option-icon, .option-font {
@@ -794,4 +795,73 @@ input[type="text"]:focus {
     opacity: 0.6;
     margin-top: 20px;
     text-align: center;
+}
+
+/* Option Image Card */
+.option-image-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    padding: 12px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.option-image-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: var(--gold-destaque);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.option-image-card:active {
+    transform: scale(0.96);
+}
+
+.option-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    background: transparent;
+}
+
+.option-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bronze-texto);
+    text-align: left;
+    margin-left: 4px;
+}
+
+/* Minimal toggle button for optional inputs */
+.minimal-toggle {
+    display: inline-block;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bronze-texto);
+    background-color: transparent;
+    border: 1px solid rgba(74, 59, 50, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+    opacity: 0.8;
+}
+.minimal-toggle:hover {
+    background-color: rgba(74, 59, 50, 0.05);
+    opacity: 1;
+}
+.minimal-toggle.selected {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold-destaque);
+    color: var(--gold-hover);
+    opacity: 1;
 }
